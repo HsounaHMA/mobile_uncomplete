@@ -67,8 +67,10 @@
                 android:id="@+id/register_btn"
                 android:text="@string/register"
                 android:textSize="18sp"
+                android:textColor="@color/white"
                 android:layout_marginTop="35dp"
-                android:backgroundTint="@color/black"/>
+                android:backgroundTint="@color/black"
+                android:background="@drawable/edit_txt_background"/>
 
 
                 <TextView

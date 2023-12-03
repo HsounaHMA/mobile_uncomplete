@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity {
 
     //chcking if there is already a log in the app if so we intent to the main .
     @Override
-    public void onStart() {
+   public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();

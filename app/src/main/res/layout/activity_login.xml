@@ -65,9 +65,11 @@
                 android:layout_height="60dp"
                 android:id="@+id/login_btn"
                 android:text="login"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginTop="35dp"
-                android:backgroundTint="@color/black"/>
+                android:backgroundTint="@color/black"
+                android:background="@drawable/edit_txt_background"/>
 
             <TextView
                 android:id="@+id/registernow"
