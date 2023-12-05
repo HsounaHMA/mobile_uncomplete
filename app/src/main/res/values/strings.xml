@@ -6,4 +6,6 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="title_activity_final_page">Final_page</string>
+    <string name="welcome">Welcome Back</string>
+    <string name="terms">By signing in you are agreeing to our <font color='#FF9051'>Terms and Privacy Policy</font></string>
 </resources>
