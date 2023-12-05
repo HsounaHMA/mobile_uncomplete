@@ -26,7 +26,7 @@ public class Login extends AppCompatActivity {
     TextView textView ;
 
     //chcking if there is already a log in the app if so we intent to the main .
-    @Override
+   /* @Override
    public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
@@ -38,7 +38,7 @@ public class Login extends AppCompatActivity {
             finish();
 
         }
-    }
+    }*/
 
 
     @Override
