@@ -45,7 +45,6 @@ public class Play extends AppCompatActivity {
     // timer declaration
     private CountDownTimer timer ;
     long time_left ;
-    static final long total_time = 31000 ; // total time for each question .
     TextView timer_view  ;
     String time_left_txt ;
 
@@ -56,11 +55,12 @@ public class Play extends AppCompatActivity {
         setContentView(R.layout.activity_play);
 
 
-         //Timer initialisation
+         //timer saved instance check .
         timer_view = findViewById(R.id.Timer) ;
-        time_left = total_time ;
-        start_timer() ;
-
+        if(savedInstanceState != null){
+            time_left = savedInstanceState.getLong("time_left") ;
+        }else {time_left = 31000 ;}
+        start_timer();
 
         q_num = findViewById(R.id.q_number);
         text_question = findViewById(R.id.question_);
@@ -143,17 +143,42 @@ public class Play extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Resume the timer
+        timer.start();
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // Save the current state of the timer
+        outState.putLong("time_left", time_left);
+    }
+
+
+    protected void onPause() {
+        super.onPause();
+        if(timer != null) {
+            timer.cancel();
+        }
+    }
+
+
+
     public void start_timer() {
 
 
         timer_view.setText(time_left_txt);
-                    // CountDownTimer() automatic function that takes 2 arguments ( time_left , tick_decrement .  )
+                    // CountDownTimer() class that takes 2 arguments ( time_left , tick_decrement .  )
         timer = new CountDownTimer( time_left , 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
                 time_left = millisUntilFinished ;
-                updatetimer() ; // this is just to update the text view of the timer it has nothing to do with the numerical variables , they are automaticly updated throuth the start methode below .
+                updatetimertext() ; // this is just to update the text view of the timer it has nothing to do with the numerical variables , they are automaticly updated throuth the start methode below .
 
             }
 
@@ -181,11 +206,11 @@ public class Play extends AppCompatActivity {
                     }
 
             }
-        }.start() ;
+        }.start();
 
     }
 
-    public void updatetimer() {
+    public void updatetimertext() {
 
         int minute = (int) (time_left / 1000 ) / 60 ;
         int seconds = (int) (time_left / 1000) % 60 ;
